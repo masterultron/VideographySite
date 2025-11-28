@@ -1,0 +1,165 @@
+.faq-page {
+  padding-top: 100px;
+  min-height: 100vh;
+}
+
+.faq-section {
+  background-color: var(--dark-charcoal);
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 40px;
+}
+
+.faq-section h2 {
+  color: var(--primary-gold);
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq-item {
+  background-color: var(--slate-grey);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.faq-item.active {
+  border-color: var(--primary-gold);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+  background-color: var(--dark-charcoal);
+}
+
+.faq-question h3 {
+  color: var(--off-white);
+  font-size: 1.05rem;
+  font-weight: 500;
+  flex: 1;
+  padding-right: 15px;
+}
+
+.faq-toggle {
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-charcoal);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-toggle {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  padding: 0 20px 20px;
+  max-height: 500px;
+}
+
+.faq-answer p {
+  color: var(--off-white);
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.reviews-section {
+  background-color: var(--dark-charcoal);
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.reviews-section h2 {
+  color: var(--primary-gold);
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.reviews-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.review-item {
+  background-color: var(--slate-grey);
+  border-radius: 8px;
+  padding: 25px;
+  border-left: 4px solid var(--primary-gold);
+  transition: all 0.3s ease;
+}
+
+.review-item:hover {
+  box-shadow: 0 0 20px var(--warm-beige);
+  transform: translateY(-3px);
+}
+
+.review-category {
+  display: inline-block;
+  background-color: var(--primary-gold);
+  color: var(--dark-charcoal);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.review-text {
+  color: var(--off-white);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.review-author {
+  color: var(--warm-beige);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .faq-section,
+  .reviews-section {
+    padding: 25px;
+  }
+
+  .faq-question h3 {
+    font-size: 0.95rem;
+  }
+
+  .reviews-list {
+    grid-template-columns: 1fr;
+  }
+}

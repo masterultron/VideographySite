@@ -1,0 +1,19 @@
+{
+  "name": "empress-videography",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 5000 -H 0.0.0.0",
+    "build": "next build",
+    "start": "next start -p 5000 -H 0.0.0.0"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "next": "^16.0.5",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-icons": "^5.5.0",
+    "sweetalert2": "^11.26.3",
+    "swiper": "^12.0.3"
+  }
+}

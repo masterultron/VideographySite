@@ -1,0 +1,135 @@
+import { useState } from 'react';
+import Head from 'next/head';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import FAQItem from '../components/FAQItem';
+
+const faqData = [
+  {
+    question: 'What types of events do you cover?',
+    answer: 'We cover a wide range of events including weddings, corporate events, social gatherings, fashion shoots, product launches, and lifestyle content. Each project is approached with creativity and professionalism to ensure your vision is perfectly captured.',
+  },
+  {
+    question: 'How far in advance should I book your services?',
+    answer: 'We recommend booking at least 2-3 months in advance for major events like weddings. For smaller projects, 2-4 weeks notice is usually sufficient. However, we always try to accommodate last-minute requests when possible.',
+  },
+  {
+    question: 'What is included in your videography packages?',
+    answer: 'Our packages typically include pre-event consultation, professional filming with high-quality equipment, expert editing, color grading, music licensing, and delivery of the final product in your preferred format. Custom packages are available based on your specific needs.',
+  },
+  {
+    question: 'How long does it take to receive the final video?',
+    answer: 'Turnaround time depends on the project complexity. Short-form content typically takes 1-2 weeks, while full wedding films or corporate videos may take 4-8 weeks. Rush delivery options are available for an additional fee.',
+  },
+  {
+    question: 'Do you travel for destination events?',
+    answer: 'Yes! We love destination projects and have experience filming in various locations. Travel fees apply based on the destination, and we recommend early booking for destination events to ensure availability.',
+  },
+  {
+    question: 'What equipment do you use?',
+    answer: 'We use professional-grade cameras, lenses, stabilizers, drones (where permitted), and audio equipment. Our gear is regularly updated to ensure we deliver the highest quality footage using the latest technology.',
+  },
+  {
+    question: 'Can I request specific songs for my video?',
+    answer: 'Absolutely! We can incorporate your preferred music, or we can suggest tracks from our licensed music library. If using copyrighted music, licensing fees may apply depending on the usage rights required.',
+  },
+  {
+    question: 'Do you offer raw footage?',
+    answer: 'Yes, raw footage can be provided upon request for an additional fee. This includes all unedited clips from your event or project. Please note that raw footage files are quite large and may require external storage.',
+  },
+  {
+    question: 'What is your cancellation policy?',
+    answer: 'We understand plans can change. Cancellations made 30+ days before the event receive a full refund minus the deposit. Cancellations within 30 days may be subject to partial fees. We always try to be flexible and accommodate rescheduling when possible.',
+  },
+  {
+    question: 'How do I get started?',
+    answer: 'Simply visit our Contact page and fill out the booking form with your project details, or reach out via phone, email, or WhatsApp. We\'ll schedule a consultation to discuss your vision, requirements, and provide a customized quote.',
+  },
+];
+
+const reviewsData = [
+  {
+    category: 'Wedding',
+    note: 'Absolutely stunning work! Every moment was captured so beautifully. Watching our wedding video still brings tears of joy. Highly recommend!',
+    name: 'Sarah & Michael Johnson',
+  },
+  {
+    category: 'Corporate',
+    note: 'Professional, punctual, and incredibly creative. The event recap video exceeded our expectations and impressed all our stakeholders.',
+    name: 'David Chen, Marketing Director',
+  },
+  {
+    category: 'Fashion',
+    note: 'Working with byEmpress was a game-changer for our brand. The visual storytelling elevated our collection launch to another level.',
+    name: 'Amara Williams, Fashion Designer',
+  },
+  {
+    category: 'Event',
+    note: 'From start to finish, the experience was seamless. The birthday video captured the essence of the celebration perfectly!',
+    name: 'Jennifer Okonkwo',
+  },
+  {
+    category: 'Wedding',
+    note: 'We were blown away by the attention to detail. Every glance, every laugh, every dance move - all captured flawlessly.',
+    name: 'The Adeyemi Family',
+  },
+  {
+    category: 'Product',
+    note: 'The product videos helped increase our online sales by 40%. The quality and creativity speak for themselves.',
+    name: 'Mark Thompson, E-commerce Owner',
+  },
+];
+
+export default function FAQs() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  return (
+    <>
+      <Head>
+        <title>FAQs & Reviews | byEmpress</title>
+        <meta name="description" content="Frequently asked questions and customer reviews for byEmpress videography services." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
+      <Navbar />
+
+      <main className="faq-page">
+        <div className="container">
+          <section className="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div className="faq-list">
+              {faqData.map((faq, index) => (
+                <FAQItem
+                  key={index}
+                  question={faq.question}
+                  answer={faq.answer}
+                  isActive={activeIndex === index}
+                  onClick={() => toggleFAQ(index)}
+                />
+              ))}
+            </div>
+          </section>
+
+          <section className="reviews-section">
+            <h2>Customer Reviews</h2>
+            <div className="reviews-list">
+              {reviewsData.map((review, index) => (
+                <div key={index} className="review-item">
+                  <span className="review-category">{review.category}</span>
+                  <p className="review-text">&ldquo;{review.note}&rdquo;</p>
+                  <p className="review-author">— {review.name}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <Footer />
+    </>
+  );
+}
