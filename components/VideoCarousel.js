@@ -72,7 +72,7 @@ export default function VideoCarousel({ videos = [], title, subsection = false }
             className="video-carousel"
             ref={carouselRef}
             style={{
-              transform: `translateX(calc(-${carouselPosition} * (280px + 20px)))`,
+              transform: `translateX(${-carouselPosition * 300}px)`,
               transition: 'transform 0.5s ease-in-out'
             }}
           >

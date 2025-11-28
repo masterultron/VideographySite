@@ -380,6 +380,7 @@ img {
   align-items: center;
   gap: 15px;
   position: relative;
+  width: 100%;
 }
 
 .category-section {
@@ -431,8 +432,10 @@ img {
 
 .video-carousel-container {
   flex: 1;
-  overflow: hidden;
+  overflow: hidden !important;
   border-radius: 8px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .video-carousel {
@@ -440,11 +443,20 @@ img {
   gap: 20px;
   padding: 15px 0;
   will-change: transform;
+  -webkit-overflow-scrolling: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.video-carousel::-webkit-scrollbar {
+  display: none !important;
 }
 
 .carousel-arrow {
   width: 50px;
   height: 50px;
+  min-width: 50px;
+  min-height: 50px;
   border-radius: 50%;
   background-color: var(--primary-gold);
   color: var(--dark-charcoal);
@@ -456,20 +468,28 @@ img {
   font-size: 1.2rem;
   transition: all 0.3s ease;
   flex-shrink: 0;
-  z-index: 10;
+  z-index: 100;
+  position: relative;
+  pointer-events: auto !important;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
 }
 
-.carousel-arrow:hover:not(.disabled) {
+.carousel-arrow:hover:not(:disabled),
+.carousel-arrow:active:not(:disabled) {
   background-color: var(--metallic-gold);
   transform: scale(1.1);
   box-shadow: 0 0 20px var(--warm-beige);
 }
 
+.carousel-arrow:disabled,
 .carousel-arrow.disabled {
   background-color: var(--slate-grey);
   color: var(--steel-grey);
   cursor: not-allowed;
   opacity: 0.5;
+  pointer-events: none;
 }
 
 .video-item {
