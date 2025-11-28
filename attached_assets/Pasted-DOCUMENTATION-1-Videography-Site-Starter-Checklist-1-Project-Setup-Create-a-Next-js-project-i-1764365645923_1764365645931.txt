@@ -1,0 +1,823 @@
+DOCUMENTATION 1
+Videography Site Starter Checklist
+1. Project Setup
+	•	Create a Next.js project in Replit.
+	•	Install required dependencies:
+	•	react & react-dom (comes with Next.js)
+	•	emailjs-com (for contact form)
+	•	react-icons (for social media icons)
+	•	Optional: swiper or similar for carousel functionality
+	•	sweetalert2 for success/error alerts
+2. File Structure
+	•	/pages
+	•	index.js → Landing Page
+	•	portfolio.js → Portfolio Page
+	•	contact.js → Contact/Booking Page
+	•	faqs.js → FAQs & Customer Reviews
+	•	/components
+	•	Navbar.js
+	•	Footer.js
+	•	VideoCarousel.js
+	•	HeroSection.js
+	•	FormModal.js
+	•	/public
+	•	/images → Static images & logos
+	•	/videos → Initial videos uploaded manually (if using Cloudinary, store URLs here)
+	•	/styles → CSS / SCSS files
+
+3. Navbar
+	•	Include logo (links to landing page)
+	•	Nav menu: Home, Portfolio, Contact, FAQs
+	•	Hamburger menu for mobile view
+	•	Fixed at top of screen
+4. Landing Page
+	•	Hero Section: Slideshow of past work videos/images
+	•	Story Section: “How it started” / personal story / brand intro
+	•	CTA: Learn More button → links to Portfolio Page
+	•	Footer: Logo, tagline, quick links
+5. Portfolio Page
+	•	Hero Section: Background image or dark overlay with header
+	•	Title: Past/Previous Works
+	•	Intro paragraph: Short description of creative style & passion
+	•	Sections/Categories:
+	•	Weddings → sub-sections (e.g., Cupid Moments, Event Highlights)
+	•	Events → Corporate, Social
+	•	Brand → Fashion, Food, Products
+	•	Lifestyle / Instagrammable
+	•	Video Editing
+	•	VideoCarousel Component:
+	•	Horizontal swipe for videos
+	•	Hover effects
+	•	Expand-on-click modal
+	•	Fully responsive
+	•	CTA: “Secure Your Date with Us” button → links to Contact Page
+	•	Social Icons linking to client’s accounts
+6. Contact Page
+	•	Contact Section:
+	•	Phone → clickable (opens dialer)
+	•	Email → clickable (opens mail app)
+	•	WhatsApp → clickable (opens WhatsApp Business DM)
+	•	Other social icons
+	•	Booking Section:
+	•	Book button opens FormModal
+	•	Form fields: Name, Phone, Email, Project type, Event date, Consultation date, Notes
+	•	SweetAlert success on submit
+	•	SweetAlert error if fields missing
+	•	Form sent using EmailJS
+	•	Footer: Same as landing page
+7. FAQs & Customer Review Page
+	•	FAQs section (10 questions; client to provide)
+	•	Customer Reviews section:
+	•	Format: Category → Note → Customer Name
+	•	Footer
+8. Instagram Integration
+	•	Use hashtag #anikeshotit to fetch videos
+	•	Parse category hashtags to display in correct section
+	•	Videos embedded on site → playable, expandable, responsive
+	•	Carousel + hover effects maintained
+
+9. Cloudinary Integration (Optional)
+	•	Host initial videos manually for development
+	•	Store URL, caption, category
+	•	Render using the same VideoCarousel component
+10. Additional Notes
+	•	Ensure all buttons, links, and forms are fully functional
+	•	Test responsiveness on mobile and desktop
+	•	Test Instagram API integration for automatic updates
+	•	Document instructions for client on posting videos using hashtags
+
+DOCUMENTATION 2
+Technology Stack & Functional Architecture
+This document explains the tools, technologies, data flow, and how each part of the system works together to create a smooth, future-proof videography website.
+1. Technology Stack Overview
+1.1 Frontend Framework
+Next.js (React Framework)
+	•	Provides fast performance with built-in optimization
+	•	Ideal for image/video-heavy websites
+	•	Handles routing, dynamic pages, and components cleanly
+	•	Great SEO (important for visibility)
+	•	Easily deployable on Vercel
+1.2 Hosting & Deployment
+Vercel (Free Hosting Tier)
+	•	Perfect for static and server-rendered Next.js sites
+	•	Auto-deployment from your codebase
+	•	Fast CDN edge delivery
+	•	Zero maintenance required
+	•	Free plan is enough for this project
+
+1.3 Contact/Booking Form Emails
+EmailJS
+	•	Sends form submissions directly to her email
+	•	No backend server needed
+	•	Supports SweetAlert success & error feedback
+	•	Lightweight and perfect for form-based sites
+1.4 Video Storage & Delivery (Initial Site Content)
+Cloudinary (Free Tier)
+Used ONLY for the videos YOU upload during development:
+	•	Stores large video files without slowing Vercel
+	•	Provides optimized streaming URLs
+	•	Supports thumbnails, auto-compression, and fast loading
+	•	Works well inside carousels and modal video players
+	•	Prevents exceeding Vercel storage limits
+
+Important:
+Cloudinary is for initial static videos only.
+1.5 Future Updates (Automatic Portfolio Updates)
+Instagram Graph API + Hashtag Filtering
+This is how SHE will add new projects after launch:
+	1.	She posts a video on Instagram.
+	2.	She adds the special project hashtag (e.g., #byEmpressPortfolio).
+	3.	The site fetches only posts that contain that hashtag.
+	4.	Videos appear automatically under the correct category.
+
+2. How the Automatic Instagram Sync Works
+2.1 Fetching the Videos
+Instagram returns:
+	•	video_url
+	•	thumbnail_url
+	•	caption text
+	•	media_type
+	•	timestamp
+You will process this data to match your UI design.
+2.2 Categorizing Videos Automatically
+We use category tags inside the caption, for example:
+	•	#wedding
+	•	#event
+	•	#fashion
+	•	#product
+	•	#lifestyle
+	•	#editing
+
+During rendering:
+If caption contains "#wedding" → show under Weddings
+If caption contains "#fashion" → show under Fashion
+If caption contains "#product" → show under Product
+...
+This keeps the portfolio automatically organized even without a CMS.
+
+2.3 Matching Your UI Features
+Instagram video URLs behave exactly like Cloudinary videos in the frontend.
+You can apply:
+
+✔ Playable inline
+✔ Expand on click (modal/lightbox)
+✔ Carousel scrolling
+✔ Hover animation
+✔ Full responsiveness
+✔ Blur-up preview thumbnails
+
+No UX difference between Cloudinary videos and Instagram videos.
+
+
+3. Content Source Summary
+Type of Video	Storage Location	Who Manages It	Notes
+Initial portfolio clips	Cloudinary	You (developer)	Added manually during development
+Future portfolio updates	Instagram hashtag feed	Client	Automatically pulled to site
+Hero/landing images	Local /public folder	You	Small assets only
+Icons, logos, UI assets	Local /public	You	Lightweight
+
+
+4. Page Functionality Components
+4.1 SweetAlert Integration
+Used for the booking form on the Contact Page.
+
+Success Alert:
+Triggered when EmailJS confirms message delivery.
+Example:
+“Booking request sent successfully!”
+
+Error Alert:
+Triggered if required fields are missing or EmailJS fails.
+Example:
+“Please fill in all required fields.”
+
+4.2 Instagram Video Playback
+The videos are played directly on the site, not on Instagram, because:
+	•	Instagram returns a direct MP4 URL
+	•	You embed it in an HTML5 <video> component
+	•	No redirection needed
+This ensures a professional portfolio experience.
+
+5. Reasons This Tech Stack Fits the Project
+✓ Free hosting but enterprise-level functionality
+
+Next.js + Vercel is the best free solution available.
+
+✓ Easy for her to update without calling you
+
+Instagram hashtag system is the simplest portfolio CMS.
+
+✓ Fast performance with video optimization
+
+Cloudinary + Next.js video optimization keeps the site smooth.
+
+✓ Zero backend required
+
+EmailJS + Instagram API covers everything.
+
+DOCUMENT 3 — SITE LAYOUT
+(Detailed Structure of All Pages and How Each Section Will Look — updated)
+GLOBAL ELEMENTS (Visible Across the Site)
+
+Navbar
+	•	Appears on all pages.
+	•	Fixed at the top of the screen (sticky).
+	•	Components:
+	•	Logo (always navigates to Landing Page when clicked)
+	•	Nav Menu:
+	•	Home
+	•	Portfolio
+	•	Contact
+	•	FAQs
+	•	Mobile View:
+	•	Converts to a hamburger menu on the top-right corner.
+	•	Dropdown contains the same menu items as above.
+
+Footer (Displayed on Landing Page, Contact Page, FAQs Page)
+	•	Logo
+	•	Short tagline
+	•	Quick links: Home, Portfolio, Contact, FAQs
+PAGE 1 — LANDING PAGE
+1. Hero Section
+	•	Large slideshow of previous works (high-quality visuals).
+	•	A header text overlay (final header to be decided — suggestions below):
+	•	“Capturing Moments, Crafting Stories”
+	•	“Where Every Frame Speaks Emotion”
+	•	“Turning Memories Into Timeless Art”
+
+2. Story Section — How It Started
+	•	Section title: How It Started
+	•	Paragraph telling her origin story:
+	•	What motivated her to start videography
+	•	Key struggles
+	•	Major breakthroughs
+	•	What makes her style unique
+
+Optional additions for this section:
+	•	A photo of her working
+	•	A highlight quote
+	•	A subtle background overlay (soft gradient or blurred image)
+
+3. Call to Action
+	•	Text: “Want to explore my creative journey?” (or similar)
+	•	Button: “Learn More” → Navigates to Portfolio Page
+
+4. Footer
+	•	Logo
+	•	Tagline
+	•	Quick links
+PAGE 2 — PORTFOLIO PAGE
+1. Hero Section
+	•	Background image or muted video clip (darkened overlay)
+	•	Header suggestion:
+	•	“A Glimpse Into My World of Creativity”
+	•	“Timeless Stories Captured With Passion”
+	•	“Where Art Meets Emotion”
+
+2. Section Title & Description
+	•	Title: Past Works
+	•	Short paragraph:
+“These are some of the projects I’ve brought to life. Each one reflects my passion, creativity, and dedication to telling meaningful stories.”
+
+3. Portfolio Sections (Categories)
+Each category contains subsections, and each subsection contains videos displayed in a carousel (horizontal slide).
+Categories & Subsections:
+A. Weddings
+	•	Cupid Moments
+	•	Event Highlights
+	•	Special Moments
+	•	Transitions
+	•	Décor
+
+B. Brand
+	•	Fashion
+	•	Food
+	•	Products
+
+C. Events
+	•	Corporate
+	•	Social
+
+D. Lifestyle / Instagrammable
+
+E. Video Editing
+Video Layout Style
+	•	Each subsection has its own carousel (side-scroll: left ↔ right).
+	•	Scrolling down reveals the next subsection.
+Description Option
+	•	Professional recommendation: Use category-level descriptions (cleaner, easier to maintain, keeps focus on visuals).
+	•	Category description example (placed above that category’s carousel): one short paragraph summarizing the category and the type of work shown.
+
+4. Call to Action (End of Portfolio Page)
+	•	Text: “Secure Your Date With Us”
+	•	Button linking to Contact Page
+PAGE 3 — CONTACT PAGE
+1. Header
+Contact Us
+2. Contact Details Section
+	•	Phone icon + Number → Opens dialer automatically when tapped on mobile.
+	•	Email icon + Address → Opens email app to compose a message when tapped.
+	•	WhatsApp icon + Number (Business DM) → Opens WhatsApp Business chat directly when tapped.
+	•	(Behaviour: tapping should open WhatsApp on mobile with a pre-selected message or open the chat to type; implemented via the standard WhatsApp link format.)
+	•	Other Social Media Icons (placed after the WhatsApp icon/number):
+	•	Instagram
+	•	TikTok
+	•	Facebook
+	•	LinkedIn
+	•	(Any additional profiles she provides)
+	•	Each icon links to the corresponding platform/profile.
+
+Note on placement: the WhatsApp icon/number is shown directly after the email contact method so users can immediately send a WhatsApp DM; the remaining social icons follow below it.
+3. Booking Section
+	•	Subtitle: “Secure Your Date With Us”
+	•	Book Button → Opens booking form popup
+
+4. Booking Form Fields
+	•	Full Name (required)
+	•	Phone Number (required)
+	•	Email (required)
+	•	Type of Project / What They Want (required)
+	•	Event Date (required where applicable)
+	•	Preferred Consultation Date (optional/required per client preference)
+	•	Additional Notes / Requests (optional)
+5. Form Validation & Feedback (SweetAlert Behaviour)
+	•	Client-side validation: required fields must be filled before submission.
+	•	If required fields are missing: show a SweetAlert error that clearly lists the missing fields or a concise message such as:
+Title: “Missing information”
+Text: “Please fill in your Name, Phone Number, and Type of Project before submitting.”
+Icon: error
+	•	On successful submission: show a SweetAlert success message confirming receipt. Example:
+Title: “Request submitted”
+Text: “Thank you — your booking request has been sent. We will get back to you soon.”
+Icon: success
+	•	After success: booking details are sent to her email (via the chosen form integration).
+	•	If the email send fails (temporary error): show a SweetAlert error with a short instruction (e.g., “There was a problem sending your request. Please try again or contact us directly via WhatsApp.”)
+
+6. After Submission
+	•	Confirmation SweetAlert displayed as above.
+	•	Booking details delivered to her email instantly.
+
+7. Footer
+Same as Landing Page.
+PAGE 4 — FAQs & CUSTOMER REVIEWS PAGE
+1. FAQs Section
+	•	Space for 10 FAQs (content to be provided later).
+	•	FAQs displayed clearly with expand/collapse behaviour (accordion) so the page remains neat.
+
+2. Customer Reviews Sectio
+Header: CUSTOMER REVIEW
+Format for each review:
+	•	Category: Type of service (e.g., Wedding, Event, Fashion)
+	•	Note: Client’s feedback/comment
+	•	Name of Customer: Person providing the review
+
+
+
+Example:
+	•	Category: Wedding
+	•	Note: “Amazing videography! Captured every moment perfectly.”
+	•	Name: Jane Doe
+
+3. Footer
+Same as other pages.
+
+Documentation 4
+Technology Stack & Functional Architecture
+This document explains the tools, technologies, data flow, and how each part of the system works together to create a smooth, future-proof videography website.
+1. Technology Stack Overview
+1.1 Frontend Framework
+Next.js (React Framework)
+	•	Provides fast performance with built-in optimization
+	•	Ideal for image/video-heavy websites
+	•	Handles routing, dynamic pages, and components cleanly
+	•	Great SEO (important for visibility)
+	•	Easily deployable on Vercel
+1.2 Hosting & Deployment
+Vercel (Free Hosting Tier)
+	•	Perfect for static and server-rendered Next.js sites
+	•	Auto-deployment from your codebase
+	•	Fast CDN edge delivery
+	•	Zero maintenance required
+	•	Free plan is enough for this project
+1.3 Contact/Booking Form Emails
+EmailJS
+	•	Sends form submissions directly to her email
+	•	No backend server needed
+	•	Supports SweetAlert success & error feedback
+	•	Lightweight and perfect for form-based sites
+1.4 Video Storage & Delivery (Initial Site Content)
+Cloudinary (Free Tier)
+Used ONLY for the videos YOU upload during development:
+	•	Stores large video files without slowing Vercel
+	•	Provides optimized streaming URLs
+	•	Supports thumbnails, auto-compression, and fast loading
+	•	Works well inside carousels and modal video players
+	•	Prevents exceeding Vercel storage limits
+
+Important:
+Cloudinary is for initial static videos only.
+She will NEVER need to use Cloudinary after deployment.
+
+1.5 Future Updates (Automatic Portfolio Updates)
+Instagram Graph API + Hashtag Filtering
+This is how SHE will add new projects after launch:
+	1.	She posts a video on Instagram.
+	2.	She adds the special project hashtag (e.g., #byEmpressPortfolio).
+	3.	The site fetches only posts that contain that hashtag.
+	4.	Videos appear automatically under the correct category.
+
+2. How the Automatic Instagram Sync Works
+2.1 Fetching the Videos
+Instagram returns:
+	•	video_url
+	•	thumbnail_url
+	•	caption text
+	•	media_type
+	•	timestamp
+
+You will process this data to match your UI design.
+2.2 Categorizing Videos Automatically
+We use category tags inside the caption, for example:
+	•	#wedding
+	•	#event
+	•	#fashion
+	•	#product
+	•	#lifestyle
+	•	#editing
+
+During rendering:
+If caption contains "#wedding" → show under Weddings
+If caption contains "#fashion" → show under Fashion
+If caption contains "#product" → show under Product
+...
+This keeps the portfolio automatically organized even without a CMS.
+
+2.3 Matching Your UI Features
+Instagram video URLs behave exactly like Cloudinary videos in the frontend.
+You can apply:
+✔ Playable inline
+✔ Expand on click (modal/lightbox)
+✔ Carousel scrolling
+✔ Hover animation
+✔ Full responsiveness
+✔ Blur-up preview thumbnails
+
+No UX difference between Cloudinary videos and Instagram videos.
+
+3. Content Source Summary
+Type of Video	Storage Location	Who Manages It	Notes
+Initial portfolio clips	Cloudinary	You (developer)	Added manually during development
+Future portfolio updates	Instagram hashtag feed	Client	Automatically pulled to site
+Hero/landing images	Local /public folder	You	Small assets only
+Icons, logos, UI assets	Local /public	You	Lightweight
+
+4. Page Functionality Components
+4.1 SweetAlert Integration
+Used for the booking form on the Contact Page.
+Success Alert:
+Triggered when EmailJS confirms message delivery.
+Example:
+“Booking request sent successfully!”
+
+Error Alert:
+Triggered if required fields are missing or EmailJS fails.
+Example:
+“Please fill in all required fields.”
+4.2 Instagram Video Playback
+
+The videos are played directly on the site, not on Instagram, because:
+	•	Instagram returns a direct MP4 URL
+	•	You embed it in an HTML5 <video> component
+	•	No redirection needed
+
+This ensures a professional portfolio experience.
+
+5. Reasons This Tech Stack Fits the Project
+
+✓ Free hosting but enterprise-level functionality
+
+Next.js + Vercel is the best free solution available.
+
+✓ Easy for her to update without calling you
+
+Instagram hashtag system is the simplest portfolio CMS.
+
+✓ Fast performance with video optimization
+
+Cloudinary + Next.js video optimization keeps the site smooth.
+
+✓ Zero backend required
+
+EmailJS + Instagram API covers everything.
+
+DOCUMENTATION 5
+Folder Structure & Component Architecture
+This document explains how to organize your Next.js project physically (folders/files) and logically (React components), making development efficient, maintainable, and scalable.
+
+1. Folder Structure (Physical Organization)
+/public
+   /videos        → initial portfolio videos (Cloudinary URLs optional)
+   /images        → hero images, icons, thumbnails
+   /favicon.ico   → site icon
+   /logo.png      → site logo
+/styles
+   globals.css    → global site styles
+   navbar.css     → navbar-specific styles
+   footer.css     → footer-specific styles
+   carousel.css   → carousel/video layout styles
+/components
+   Navbar.js      → responsive navbar with logo & links
+   Footer.js      → site footer component
+   HeroSection.js → hero section with slideshow/video/headers
+   StorySection.js→ landing page “How It Started” story
+   PortfolioCategory.js → handles category layout (Weddings, Events, etc.)
+   VideoCarousel.js → carousel component for videos (playable, expandable)
+   SocialIcons.js → reusable social media icon links
+   ContactForm.js → book now form (with EmailJS + SweetAlert)
+   FAQItem.js     → single FAQ component
+/pages
+   index.js       → landing page
+   portfolio.js   → portfolio page with categories & carousels
+   contact.js     → contact page with form & social links
+   faq.js         → FAQs & Customer Reviews page
+/utils
+   email.js       → EmailJS integration helper
+   instagramApi.js→ Instagram hashtag feed fetch helper
+/data
+   faqs.json      → preloaded FAQs data (optional)
+   customerReviews.json → preloaded customer reviews (optional)
+
+2. Component Architecture (Logical UI Structure)
+2.1 Navbar
+	•	Present on all pages
+	•	Contains:
+	•	Logo (click navigates to landing page)
+	•	Menu links: Home, Portfolio, Contact, FAQs
+	•	Mobile: collapses to hamburger menu at top right
+	•	Sticky: stays on top during scroll
+2.2 Footer
+	•	Present on Landing, Portfolio, Contact, FAQs pages
+	•	Contains:
+	•	Logo
+	•	Short tagline
+	•	Quick links to pages
+	•	Consistent design for branding
+2.3 Landing Page Components
+	1.	HeroSection
+	•	Slideshow of images/videos
+	•	Header text (TBD)
+	2.	StorySection (“How it Started”)
+	•	Short personal story + inspiration, challenges, breakthrough
+	•	Optionally add visual elements / timeline
+	3.	CTA Button
+	•	“Learn More” → links to Portfolio page
+2.4 Portfolio Page Components
+	1.	HeroSection
+	•	Background image/video
+	•	Header text (TBD)
+	2.	PortfolioCategory
+	•	Handles main categories:
+	•	Weddings → Cupid Moments, Event Highlights, Special Moments, Transitions, Decor
+	•	Brand → Fashion, Food, Product
+	•	Events → Corporate, Social
+	•	Lifestyle / Instagrammable
+	•	Video Editing / Reels
+	•	Each category contains VideoCarousel component
+	3.	VideoCarousel
+	•	Displays videos horizontally scrollable (swipe left/right)
+	•	Each video: playable, expandable modal, hover effects
+	•	Fully responsive
+	4.	CTA Section
+	•	Text: “Secure your date with us”
+	•	Button → links to Contact page
+
+2.5 Contact Page Components
+	1.	Header → “Contact Us”
+	2.	Contact Details Section
+	•	Phone icon + clickable number → opens dialer
+	•	Email icon + clickable email → opens email client
+	•	WhatsApp icon + clickable → opens WhatsApp DM
+	•	Social media icons → link to Instagram, TikTok, Facebook, LinkedIn
+	3.	Booking Section
+	•	Subtitle: “Secure your date with us”
+	•	Button → opens ContactForm
+	4.	ContactForm
+	•	Fields:
+	•	Full Name
+	•	Phone Number
+	•	Email
+	•	Type of Project
+	•	Event Date
+	•	Preferred Consultation Date
+	•	Additional Notes
+	•	Form Validation: SweetAlert success/error
+	•	Submission → sent via EmailJS to client’s email
+	5.	Footer → same as other pages
+
+2.6 FAQs & Customer Reviews Page Components
+	1.	FAQs Section
+	•	Render multiple FAQItem components
+	2.	Customer Review Section
+	•	Display each review:
+	•	Category (e.g., Wedding, Event, Fashion)
+	•	Note: feedback
+	•	Name: customer name
+	3.	Footer → consistent with other pages
+
+
+2.7 Shared / Reusable Components
+	•	HeroSection → used on multiple pages, customizable via props
+	•	VideoCarousel → reusable across categories
+	•	SocialIcons → can accept dynamic links
+	•	Footer → site-wide consistency
+	•	Navbar → site-wide consistency
+
+3. Notes on Data & Updates
+	•	Initial videos → stored in Cloudinary (development)
+	•	Future videos → automatically fetched from Instagram via hashtag
+	•	Instagram videos rendered in the same VideoCarousel with all effects
+	•	All categories are auto-assigned based on caption hashtags
+
+This setup ensures:
+	•	Clean, maintainable project structure
+	•	Easy for future updates (Instagram or manual Cloudinary additions)
+	•	All components reusable and responsive
+	•	Full control over UI/UX for every page
+
+
+
+
+
+
+
+
+
+
+
+
+DOCUMENTATION 6
+API/Data Flow & Instagram + Cloudinary Integration
+This document explains how the videography site will fetch, display, and update videos automatically from Instagram using a hashtag, and how Cloudinary can be used to store and serve videos added manually during development.
+1. Instagram API Integration
+Objective: Allow the client to add new videos to the portfolio herself without needing access to the site code.
+How it works:
+	1.	The site fetches posts from the client’s Instagram account using Instagram Graph API (requires an Instagram Business or Creator account).
+	2.	Only posts containing the portfolio hashtag #anikeshotit are retrieved.
+	3.	The API returns the following data for each post:
+	•	Media URL → link to the video file or thumbnail
+	•	Caption → contains hashtags and descriptions
+	•	Media Type → video or image
+	•	Timestamp → when the post was published
+	4.	The Next.js app parses the caption for category hashtags, e.g.:
+	•	#wedding → goes under Weddings
+	•	#event → goes under Events
+	•	#fashion → goes under Fashion
+	•	#food → goes under Food
+	•	#product → goes under Products
+	•	#lifestyle → goes under Instagrammable / Lifestyle
+	•	#videoediting → goes under Video Editing
+	5.	Once categorized, the post is rendered in the correct VideoCarousel component on the portfolio page, with:
+	•	Playable video embedded directly on the site
+	•	Expand-on-click modal
+	•	Horizontal carousel scrolling
+	•	Hover effects
+	•	Fully responsive design
+
+Important Notes:
+	•	She must include both #anikeshotit and the category hashtag in her IG post for it to show correctly.
+	•	Posts missing the category hashtag can be placed in a “Miscellaneous” section or flagged for manual review.
+
+2. Cloudinary Integration (for initial/development videos)
+Objective: Allow developers to host larger video files for the initial site build without relying on Instagram.
+How it works:
+	1.	During development, videos provided by the client are uploaded to Cloudinary.
+	2.	Each video is stored with metadata:
+	•	URL
+	•	Caption / Description
+	•	Category
+	3.	Videos are fetched from Cloudinary by the Next.js site and displayed using the same VideoCarousel components.
+
+Benefits:
+	•	Avoids large video file size limitations on Vercel
+	•	Supports high-quality video playback
+	•	Ensures all front-end effects (carousel, hover, expand) work consistently.
+3. Data Flow Overview
+Step-by-Step:
+	1.	Initial Site Build:
+	•	Videos provided by client uploaded to Cloudinary → added to portfolio categories manually.
+	•	All frontend effects (carousel, modal, responsiveness) applied.
+	2.	Post-Deployment Updates via Instagram:
+	•	Site fetches Instagram posts with #anikeshotit hashtag via API.
+	•	Caption parsed for category hashtags.
+	•	Videos automatically rendered in the correct category on portfolio page.
+	•	Same frontend effects are applied automatically (playable, expandable, carousel).
+	3.	Rendering & Display:
+	•	VideoCarousel receives an array of video objects from either Cloudinary or Instagram API.
+	•	Each object includes:
+	•	url → video file
+	•	thumbnail → optional poster image
+	•	caption → description
+	•	category → section placement
+	•	Carousel renders videos in proper order with swipe functionality.
+
+4. Key Advantages of This Setup
+	•	Self-Updating Portfolio: Client can add videos herself by posting on Instagram with proper hashtags.
+	•	Consistent UI/UX: All videos (manual or IG-sourced) share the same layout, carousel, hover, and expand functionality.
+	•	Free Hosting Friendly: Instagram-hosted videos reduce the need for heavy storage on Vercel.
+	•	Scalable: New categories or videos can be added without coding.
+	•	Client-Friendly: Minimal technical knowledge required; just post on IG.
+5. Recommendations / Best Practices
+	1.	Always include portfolio hashtag #anikeshotit on every IG post for portfolio inclusion.
+	2.	Always include category hashtag for correct placement.
+	3.	Keep Instagram videos short to ensure fast loading on the site.
+	4.	Optional: Use Cloudinary for large/high-quality videos if needed during development or special projects.
+
+DOCUMENTATION 7
+COLOR COMBO DOCUMENT (Gold & Grey Theme)
+1. Primary Colors
+A. Luxury Gold (Main Gold Accent)
+Used for:
+	•	Buttons
+	•	Borders
+	•	Video frame highlights
+	•	Hover effects
+	•	Icons
+	•	Section dividers
+HEX: #D7B673
+B. Metallic Gold (Deep Gold for 3D accents)
+Used for:
+	•	Knobs
+	•	Depth shadows
+	•	Strong highlights
+HEX: #B48A3C
+2. Base Grey Tones
+A. Dark Charcoal Grey (Main UI Background)
+Used for:
+	•	Main background of sections
+	•	NavBar background
+	•	Portfolio grid background
+HEX: #2A2F34
+B. Soft Steel Grey (Page Background / Body Background)
+Used for:
+	•	Full page background
+	•	“Outer” wrappers
+HEX: #7A7F85
+
+C. Deep Slate Grey (Card Backgrounds)
+Used for:
+	•	Video containers
+	•	Portfolio blocks
+HEX: #3A3F45
+
+3. Supporting Colors
+A. Off-White / Gold-Tinted White (Text)
+Used for:
+	•	Titles
+	•	Light text
+	•	Label text
+HEX: #E9E4D8
+
+B. Warm Beige (Subtle glow elements)
+Used for:
+	•	Soft shadows
+	•	Hover glows
+	•	Ambient highlight
+HEX: #C9B79A
+
+4. Component-Specific Color Assignments
+Buttons
+	•	Background: #D7B673 (Luxury Gold)
+	•	Border: #B48A3C (Metallic Gold)
+	•	Text: #2A2F34 (Charcoal)
+
+Video Carousel Borders
+	•	Outer border: #D7B673
+	•	Hover glow: #C9B79A (subtle beige glow)
+
+Carousel Background (behind thumbnails)
+	•	#3A3F45
+
+
+
+Navbar
+	•	Background: #2A2F34
+	•	Text (links): #E9E4D8
+	•	Hover underline: #D7B673
+
+Footer
+	•	Background: #2A2F34
+	•	Text: #E9E4D8, accents #D7B673
+
+Page Background
+	•	#7A7F85
+
+5. Recommended UI Usage Summary
+Component	Color
+Primary Accent	#D7B673
+Secondary Accent	#B48A3C
+Main Background	#2A2F34
+Section Background	#3A3F45
+Page Background	#7A7F85
+Text	#E9E4D8
+Glow/Soft Highlight	#C9B79A
+
