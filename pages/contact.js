@@ -7,13 +7,13 @@ import SocialIcons from '../components/SocialIcons';
 import { FaPhone, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 
 const contactInfo = {
-  phone: '+1234567890',
-  email: 'hello@byempress.com',
-  whatsapp: '+1234567890',
+  phone: '08134231274',
+  email: 'workwithanike@gmail.com',
+  whatsapp: '08134231274',
 };
 
 const socialLinks = {
-  instagram: 'https://instagram.com/byempress',
+  instagram: 'https://www.instagram.com/shotbyanike?igsh=d2tnODhyZHNrdGlh',
   tiktok: 'https://tiktok.com/@byempress',
   facebook: 'https://facebook.com/byempress',
   linkedin: 'https://linkedin.com/in/byempress',
@@ -28,7 +28,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact Us | byEmpress</title>
+        <title>Contact Us</title>
         <meta name="description" content="Get in touch with byEmpress for your videography needs. Book your session today." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

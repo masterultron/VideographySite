@@ -121,7 +121,7 @@ const portfolioData = [
 ];
 
 const socialLinks = {
-  instagram: 'https://instagram.com/byempress',
+  instagram: 'https://www.instagram.com/shotbyanike?igsh=d2tnODhyZHNrdGlh',
   tiktok: 'https://tiktok.com/@byempress',
   facebook: 'https://facebook.com/byempress',
   linkedin: 'https://linkedin.com/in/byempress',
@@ -133,7 +133,7 @@ export default function Portfolio() {
   return (
     <>
       <Head>
-        <title>Portfolio | byEmpress</title>
+        <title>Portfolio</title>
         <meta name="description" content="Explore our portfolio of weddings, events, brand content, lifestyle videos, and professional editing work." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

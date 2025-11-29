@@ -25,7 +25,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link href="/" className="navbar-logo">
-          byEmpress
+          ShotByAnike
         </Link>
 
         <ul className="navbar-menu">

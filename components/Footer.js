@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="footer-logo">byEmpress</div>
+        <div className="footer-logo">ShotByAnike</div>
         <p className="footer-tagline">Capturing Moments, Crafting Stories</p>
         
         <ul className="footer-links">
@@ -19,7 +19,7 @@ export default function Footer() {
         <div className="footer-divider"></div>
         
         <p className="footer-copyright">
-          &copy; {currentYear} byEmpress. All rights reserved.
+          &copy; {currentYear} ShotByAnike. All rights reserved. Designed and Developed by TheeAbdurrahamanJamiu
         </p>
       </div>
     </footer>

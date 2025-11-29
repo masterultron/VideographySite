@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>byEmpress | Videography & Creative Storytelling</title>
+        <title>ShotByAnike| Videography & Creative Storytelling</title>
         <meta name="description" content="Professional videography services - capturing moments, crafting stories. Weddings, events, brand content, and more." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

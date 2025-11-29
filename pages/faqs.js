@@ -13,22 +13,28 @@ const faqData = [
     question: 'How far in advance should I book your services?',
     answer: 'We recommend booking at least 2-3 months in advance for major events like weddings. For smaller projects, 2-4 weeks notice is usually sufficient. However, we always try to accommodate last-minute requests when possible.',
   },
+
+  {
+    question: 'What is your payment policy?',
+    answer: 'A 75% deposit is required before work begins, and the remaining balance must be paid before the final edited videos are delivered.',
+  },
+
   {
     question: 'What is included in your videography packages?',
     answer: 'Our packages typically include pre-event consultation, professional filming with high-quality equipment, expert editing, color grading, music licensing, and delivery of the final product in your preferred format. Custom packages are available based on your specific needs.',
   },
   {
     question: 'How long does it take to receive the final video?',
-    answer: 'Turnaround time depends on the project complexity. Short-form content typically takes 1-2 weeks, while full wedding films or corporate videos may take 4-8 weeks. Rush delivery options are available for an additional fee.',
+    answer: 'Turnaround time depends on the project and type of content. Standard delivery is usually within 24–72 hours. Same-day delivery is available upon request for an additional fee per video.',
   },
   {
     question: 'Do you travel for destination events?',
-    answer: 'Yes! We love destination projects and have experience filming in various locations. Travel fees apply based on the destination, and we recommend early booking for destination events to ensure availability.',
+    answer: 'Yes! We’re available to travel by flight for destination projects. For out-of-state events, suitable accommodation should be provided. We recommend early booking to ensure availability for travel-based projects.',
   },
-  {
-    question: 'What equipment do you use?',
-    answer: 'We use professional-grade cameras, lenses, stabilizers, drones (where permitted), and audio equipment. Our gear is regularly updated to ensure we deliver the highest quality footage using the latest technology.',
-  },
+  // {
+  //   question: 'What equipment do you use?',
+  //   answer: 'We use professional-grade cameras, lenses, stabilizers, drones (where permitted), and audio equipment. Our gear is regularly updated to ensure we deliver the highest quality footage using the latest technology.',
+  // },
   {
     question: 'Can I request specific songs for my video?',
     answer: 'Absolutely! We can incorporate your preferred music, or we can suggest tracks from our licensed music library. If using copyrighted music, licensing fees may apply depending on the usage rights required.',
@@ -37,10 +43,7 @@ const faqData = [
     question: 'Do you offer raw footage?',
     answer: 'Yes, raw footage can be provided upon request for an additional fee. This includes all unedited clips from your event or project. Please note that raw footage files are quite large and may require external storage.',
   },
-  {
-    question: 'What is your cancellation policy?',
-    answer: 'We understand plans can change. Cancellations made 30+ days before the event receive a full refund minus the deposit. Cancellations within 30 days may be subject to partial fees. We always try to be flexible and accommodate rescheduling when possible.',
-  },
+  
   {
     question: 'How do I get started?',
     answer: 'Simply visit our Contact page and fill out the booking form with your project details, or reach out via phone, email, or WhatsApp. We\'ll schedule a consultation to discuss your vision, requirements, and provide a customized quote.',
