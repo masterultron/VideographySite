@@ -12,9 +12,13 @@ export default function HeroSection({
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const defaultSlides = [
-    { image: '/images/hero-1.jpg' },
-    { image: '/images/hero-2.jpg' },
-    { image: '/images/hero-3.jpg' },
+    { image: '/images/PortfolioHeroSection.jpeg' },
+    { image: '/images/PortfolioHeroSection4.jpeg' },
+    // { image: '/images/PortfolioHeroSection5.jpeg' },
+    { image: '/images/PortfolioHeroSection6.jpeg' },
+    { image: '/images/PortfolioHeroSection7.jpeg' },
+    { image: '/images/PortfolioHeroSection8.jpeg' },
+    { image: '/images/PortfolioHeroSection9.jpeg' },
   ];
 
   const slidesToUse = slides.length > 0 ? slides : defaultSlides;

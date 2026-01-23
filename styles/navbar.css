@@ -19,11 +19,34 @@
 }
 
 .navbar-logo {
-  font-size: 1.5rem;
-  font-weight: 700;
+  /* font-size: 1.5rem;
+  font-weight: 200; */
+  
   color: var(--primary-gold);
   cursor: pointer;
   transition: color 0.3s ease;
+}
+
+img{
+  height: 70px;
+  width: auto;
+
+  /* More padding for a "framed" look */
+  padding: 10px 15px;
+
+  /* A stark white background to contrast a dark nav */
+  background: 
+    linear-gradient(#2A2F34, #2A2F34) padding-box, /* Inner Background */
+    linear-gradient(135deg, #D7B673, #B48A3C, #C9B79A) border-box;
+
+  /* A slightly thicker, darker border */
+  border: 3px solid transparent;
+
+  /* Only slightly rounded corners */
+  border-radius: 12px;
+
+  /* A stronger shadow for a "button" feel */
+ box-shadow: 0 4px 15px rgba(201, 183, 154, 0.3);
 }
 
 .navbar-logo:hover {

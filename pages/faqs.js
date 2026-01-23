@@ -53,17 +53,17 @@ const faqData = [
 const reviewsData = [
   {
     category: 'Wedding',
-    note: 'Absolutely stunning work! Every moment was captured so beautifully. Watching our wedding video still brings tears of joy. Highly recommend!',
-    name: 'Sarah & Michael Johnson',
+    note: 'You made me so happy today , I love my videos so much I’m glad I get to relive all this beautiful memories thank youuu 🥹❤️!',
+    name: 'Bride sakeenah',
   },
   {
     category: 'Corporate',
-    note: 'Professional, punctual, and incredibly creative. The event recap video exceeded our expectations and impressed all our stakeholders.',
-    name: 'David Chen, Marketing Director',
+    note: 'Anike you did a big one with this one, I love love it!',
+    name: 'YN Interior Designer',
   },
   {
     category: 'Fashion',
-    note: 'Working with byEmpress was a game-changer for our brand. The visual storytelling elevated our collection launch to another level.',
+    note: 'Working with Anike was a game-changer for our brand. The visual storytelling elevated our collection launch to another level.',
     name: 'Amara Williams, Fashion Designer',
   },
   {
@@ -73,13 +73,13 @@ const reviewsData = [
   },
   {
     category: 'Wedding',
-    note: 'We were blown away by the attention to detail. Every glance, every laugh, every dance move - all captured flawlessly.',
-    name: 'The Adeyemi Family',
+    note: 'heyyy, thank you so so much for all of the beautiful videos ♥️♥️♥️ you&apo;ve captured so many of my wedding moments in the most beautiful way, thank you so much im so happy with the videos 🥹🥹♥️♥️♥️',
+    name: '#Aishab.25, Aisha Alkali',
   },
   {
     category: 'Product',
-    note: 'The product videos helped increase our online sales by 40%. The quality and creativity speak for themselves.',
-    name: 'Mark Thompson, E-commerce Owner',
+    note: 'Your videos are so clean, neat, i love how you captured every detail',
+    name: 'Attik, Brand-Owner',
   },
 ];
 
@@ -93,7 +93,7 @@ export default function FAQs() {
   return (
     <>
       <Head>
-        <title>FAQs & Reviews | byEmpress</title>
+        <title>FAQs & Reviews | shotbyanike</title>
         <meta name="description" content="Frequently asked questions and customer reviews for byEmpress videography services." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

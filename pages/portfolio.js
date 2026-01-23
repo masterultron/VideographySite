@@ -4,131 +4,83 @@ import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import PortfolioCategory from '../components/PortfolioCategory';
 import SocialIcons from '../components/SocialIcons';
-
-const portfolioData = [
-  {
-    title: 'Weddings',
-    description: 'Capturing the most magical moments of your special day. From intimate ceremonies to grand celebrations, every love story deserves to be told beautifully.',
-    subsections: [
-      {
-        title: 'Cupid Moments',
-        videos: [
-          { thumbnail: '/images/wedding-cupid-1.jpg', videoUrl: '' },
-          { thumbnail: '/images/wedding-cupid-2.jpg', videoUrl: '' },
-          { thumbnail: '/images/wedding-cupid-3.jpg', videoUrl: '' },
-        ],
-      },
-      {
-        title: 'Event Highlights',
-        videos: [
-          { thumbnail: '/images/wedding-highlights-1.jpg', videoUrl: '' },
-          { thumbnail: '/images/wedding-highlights-2.jpg', videoUrl: '' },
-          { thumbnail: '/images/wedding-highlights-3.jpg', videoUrl: '' },
-        ],
-      },
-      {
-        title: 'Special Moments',
-        videos: [
-          { thumbnail: '/images/wedding-special-1.jpg', videoUrl: '' },
-          { thumbnail: '/images/wedding-special-2.jpg', videoUrl: '' },
-        ],
-      },
-      {
-        title: 'Transitions',
-        videos: [
-          { thumbnail: '/images/wedding-transitions-1.jpg', videoUrl: '' },
-          { thumbnail: '/images/wedding-transitions-2.jpg', videoUrl: '' },
-        ],
-      },
-      {
-        title: 'Decor',
-        videos: [
-          { thumbnail: '/images/wedding-decor-1.jpg', videoUrl: '' },
-          { thumbnail: '/images/wedding-decor-2.jpg', videoUrl: '' },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Brand',
-    description: 'Elevating brands through compelling visual narratives. From fashion shoots to product showcases, we create content that resonates with your audience.',
-    subsections: [
-      {
-        title: 'Fashion',
-        videos: [
-          { thumbnail: '/images/brand-fashion-1.jpg', videoUrl: '' },
-          { thumbnail: '/images/brand-fashion-2.jpg', videoUrl: '' },
-          { thumbnail: '/images/brand-fashion-3.jpg', videoUrl: '' },
-        ],
-      },
-      {
-        title: 'Food',
-        videos: [
-          { thumbnail: '/images/brand-food-1.jpg', videoUrl: '' },
-          { thumbnail: '/images/brand-food-2.jpg', videoUrl: '' },
-        ],
-      },
-      {
-        title: 'Products',
-        videos: [
-          { thumbnail: '/images/brand-products-1.jpg', videoUrl: '' },
-          { thumbnail: '/images/brand-products-2.jpg', videoUrl: '' },
-          { thumbnail: '/images/brand-products-3.jpg', videoUrl: '' },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Events',
-    description: 'From corporate gatherings to social celebrations, we document the energy and essence of every event with precision and creativity.',
-    subsections: [
-      {
-        title: 'Corporate',
-        videos: [
-          { thumbnail: '/images/events-corporate-1.jpg', videoUrl: '' },
-          { thumbnail: '/images/events-corporate-2.jpg', videoUrl: '' },
-        ],
-      },
-      {
-        title: 'Social',
-        videos: [
-          { thumbnail: '/images/events-social-1.jpg', videoUrl: '' },
-          { thumbnail: '/images/events-social-2.jpg', videoUrl: '' },
-          { thumbnail: '/images/events-social-3.jpg', videoUrl: '' },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Lifestyle / Instagrammable',
-    description: 'Creating visually stunning content perfect for social media. Trendy, engaging, and scroll-stopping visuals that capture attention.',
-    videos: [
-      { thumbnail: '/images/lifestyle-1.jpg', videoUrl: '' },
-      { thumbnail: '/images/lifestyle-2.jpg', videoUrl: '' },
-      { thumbnail: '/images/lifestyle-3.jpg', videoUrl: '' },
-      { thumbnail: '/images/lifestyle-4.jpg', videoUrl: '' },
-    ],
-  },
-  {
-    title: 'Video Editing',
-    description: 'Professional post-production services that bring raw footage to life. Color grading, transitions, effects, and storytelling through expert editing.',
-    videos: [
-      { thumbnail: '/images/editing-1.jpg', videoUrl: '' },
-      { thumbnail: '/images/editing-2.jpg', videoUrl: '' },
-      { thumbnail: '/images/editing-3.jpg', videoUrl: '' },
-    ],
-  },
-];
-
-const socialLinks = {
-  instagram: 'https://www.instagram.com/shotbyanike?igsh=d2tnODhyZHNrdGlh',
-  tiktok: 'https://tiktok.com/@byempress',
-  facebook: 'https://facebook.com/byempress',
-  linkedin: 'https://linkedin.com/in/byempress',
-};
+import { portfolioVideos } from '../data/portfolioData'; // Import the Real Data
 
 export default function Portfolio() {
   const router = useRouter();
+
+  // --- 1. DEFINING SOCIAL LINKS (Fixed: This was missing) ---
+  const socialLinks = {
+    instagram: 'https://www.instagram.com/shotbyanike?igsh=d2tnODhyZHNrdGlh',
+    tiktok: 'https://tiktok.com/@byempress',
+    facebook: 'https://facebook.com/byempress',
+    linkedin: 'https://linkedin.com/in/byempress',
+    twitter: 'https://x.com/shotbyanike?s=21&t=JsGfU-l9pFBFZYGpFYZ0ww'
+  };
+
+  // --- 2. CONFIGURATION ---
+  const categoriesConfig = [
+    {
+      id: 'Weddings',
+      title: 'Weddings',
+      description: 'Capturing the most magical moments of your special day. From intimate ceremonies to grand celebrations, every love story deserves to be told beautifully.',
+      hasSubsections: true
+    },
+    {
+      id: 'Brand',
+      title: 'Brand',
+      description: 'Elevating brands through compelling visual narratives. From fashion shoots to product showcases, we create content that resonates with your audience.',
+      hasSubsections: true
+    },
+    {
+      id: 'Events',
+      title: 'Events',
+      description: 'From corporate gatherings to social celebrations, we document the energy and essence of every event with precision and creativity.',
+      hasSubsections: true
+    },
+    {
+      id: 'Lifestyle',
+      title: 'Lifestyle / Instagrammable',
+      description: 'Creating visually stunning content perfect for social media. Trendy, engaging, and scroll-stopping visuals that capture attention.',
+      hasSubsections: false
+    },
+    {
+      id: 'Video Editing',
+      title: 'Video Editing',
+      description: 'Professional post-production services that bring raw footage to life. Color grading, transitions, effects, and storytelling through expert editing.',
+      hasSubsections: false
+    }
+  ];
+
+  // --- 3. MERGE LOGIC ---
+  const dynamicPortfolioData = categoriesConfig.map(config => {
+    // We match the "id" here to the "category" in portfolioData.js
+    const videos = portfolioVideos.filter(v => v.category === config.id);
+
+    if (config.hasSubsections) {
+      const groups = videos.reduce((acc, video) => {
+        const sub = video.subCategory || "General";
+        if (!acc[sub]) acc[sub] = [];
+        acc[sub].push(video);
+        return acc;
+      }, {});
+
+      return {
+        title: config.title,
+        description: config.description,
+        subsections: Object.keys(groups).map(subKey => ({
+          title: subKey,
+          videos: groups[subKey]
+        }))
+      };
+    } else {
+      return {
+        title: config.title,
+        description: config.description,
+        videos: videos
+      };
+    }
+  });
 
   return (
     <>
@@ -156,9 +108,14 @@ export default function Portfolio() {
             </p>
           </div>
 
-          {portfolioData.map((category, index) => (
-            <PortfolioCategory key={index} category={category} />
-          ))}
+          {/* Render the Dynamic Data */}
+          {dynamicPortfolioData.map((category, index) => {
+            // Only render if there is data
+            if ((category.videos && category.videos.length > 0) || (category.subsections && category.subsections.length > 0)) {
+               return <PortfolioCategory key={index} category={category} />;
+            }
+            return null;
+          })}
 
           <div style={{
             textAlign: 'center',
