@@ -12,9 +12,11 @@ const contactInfo = {
   whatsapp: '08134231274',
 };
 
+// 1. Add Twitter here so it gets passed to the SocialIcons component
 const socialLinks = {
   instagram: 'https://www.instagram.com/shotbyanike?igsh=d2tnODhyZHNrdGlh',
   tiktok: 'https://tiktok.com/@byempress',
+  twitter: 'https://twitter.com/byempress', // Added Twitter
   facebook: 'https://facebook.com/byempress',
   linkedin: 'https://linkedin.com/in/byempress',
 };
@@ -88,6 +90,7 @@ export default function Contact() {
               </a>
             </div>
 
+            {/* The Twitter link inside socialLinks will now be rendered here */}
             <div className="social-icons-section">
               <h3>Connect With Us</h3>
               <SocialIcons links={socialLinks} />

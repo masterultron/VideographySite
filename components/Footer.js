@@ -22,6 +22,6 @@ export default function Footer() {
           &copy; {currentYear} ShotByAnike. All rights reserved. Designed and Developed by TheeAbdurrahamanJamiu
         </p>
       </div>
-    </footer>
+    </footer> 
   );
 }
