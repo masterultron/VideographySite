@@ -43,6 +43,7 @@ export default function FormModal({ isOpen, onClose }) {
       const missingNames = missingFields.map((f) => fieldNames[f]).join(', ');
       
       Swal.fire({
+        target: '.form-modal', 
         title: 'Missing Information',
         text: `Please fill in: ${missingNames}`,
         icon: 'error',
@@ -55,10 +56,12 @@ export default function FormModal({ isOpen, onClose }) {
 
     setIsSubmitting(true);
 
+   
+
     try {
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         {
           from_name: formData.fullName,
           phone: formData.phone,
@@ -68,32 +71,39 @@ export default function FormModal({ isOpen, onClose }) {
           consultation_date: formData.consultationDate || 'Not specified',
           notes: formData.notes || 'No additional notes',
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
 
-      Swal.fire({
+ Swal.fire({
+        target: '.form-modal',
         title: 'Request Submitted',
-        text: 'Thank you — your booking request has been sent. We will get back to you soon.',
+        text: 'Thank you — your booking request has been sent.',
         icon: 'success',
         confirmButtonColor: '#D7B673',
         background: '#2A2F34',
         color: '#E9E4D8',
+      }).then(() => {
+      
+        setFormData({
+          fullName: '',
+          phone: '',
+          email: '',
+          projectType: '',
+          eventDate: '',
+          consultationDate: '',
+          notes: '',
+        });
+        onClose(); 
       });
 
-      setFormData({
-        fullName: '',
-        phone: '',
-        email: '',
-        projectType: '',
-        eventDate: '',
-        consultationDate: '',
-        notes: '',
-      });
-      onClose();
-    } catch (error) {
+      } catch (error) {
+      console.error("EMAILJS ERROR:", error); // Keep this to see the full object in console
+
       Swal.fire({
+        target: '.form-modal',
         title: 'Submission Failed',
-        text: 'There was a problem sending your request. Please try again or contact us directly via WhatsApp.',
+        // FIX: Check for .text (EmailJS) AND .message (JavaScript/Network)
+        text: `Error: ${error?.text || error?.message || 'Check your .env.local file and restart server'}`,
         icon: 'error',
         confirmButtonColor: '#D7B673',
         background: '#2A2F34',

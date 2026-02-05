@@ -9,9 +9,16 @@ export default function Home() {
   const router = useRouter();
 
   const heroSlides = [
-    { image: '/images/hero-1.jpg' },
-    { image: '/images/hero-2.jpg' },
-    { image: '/images/hero-3.jpg' },
+    { image: '/images/HomeHeroSection2.JPG' },
+    { image: '/images/HomeHeroSection.JPG' },
+    { image: '/images/HomeHeroSection3.JPG' },
+    { image: '/images/HomeHeroSection4.PNG' },
+    { image: '/images/HomeHeroSection5.PNG' },
+    { image: '/images/HomeHeroSection6.PNG ' },  
+    { image: '/images/HomeHeroSection7.PNG' },
+    { image: '/images/HomeHeroSection8.PNG' },
+    { image: '/images/HomeHeroSection9.PNG' },
+    { image: '/images/HomeHeroSection10.PNG' },
   ];
 
   const handleLearnMore = () => {
