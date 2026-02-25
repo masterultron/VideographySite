@@ -56,8 +56,8 @@ export const portfolioVideos = [
     category: "Brand",
     subCategory: "Products",
     title: "Product Showcase",
-    videoUrl: optimizeCloudinaryUrl("https://res.cloudinary.com/ddk0mcae2/video/upload/v1768080132/IMG_9283_ed5i51.mp4"),
-    thumbnail: optimizeCloudinaryUrl("https://res.cloudinary.com/ddk0mcae2/video/upload/v1768080132/IMG_9283_ed5i51.jpg"),
+    videoUrl: optimizeCloudinaryUrl("https://res.cloudinary.com/ddk0mcae2/video/upload/v1772024980/ArtisticWoodenPieces_ski0f2.mp4"),
+    thumbnail: optimizeCloudinaryUrl("https://res.cloudinary.com/ddk0mcae2/video/upload/v1772024980/ArtisticWoodenPieces_ski0f2.jpg"),
   },
 
   // ============================

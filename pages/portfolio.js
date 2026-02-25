@@ -12,9 +12,9 @@ export default function Portfolio() {
   // --- 1. DEFINING SOCIAL LINKS (Fixed: This was missing) ---
   const socialLinks = {
     instagram: 'https://www.instagram.com/shotbyanike?igsh=d2tnODhyZHNrdGlh',
-    tiktok: 'https://tiktok.com/@byempress',
-    facebook: 'https://facebook.com/byempress',
-    linkedin: 'https://linkedin.com/in/byempress',
+    tiktok: 'https://tiktok.com/@shotbyanikee?_r=1&_t=Zs-92IVMKPRQTz',
+    facebook: 'https://facebook.com/share/1HKBuV9Ur3/?mibextid=wwXlfr',
+    // linkedin: 'https://linkedin.com/in/byempress',
     twitter: 'https://x.com/shotbyanike?s=21&t=JsGfU-l9pFBFZYGpFYZ0ww'
   };
 
